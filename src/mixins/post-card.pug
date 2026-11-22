@@ -1,0 +1,9 @@
+//- +post-card(post) - запис журналу (дані: src/data/posts.pug)
+mixin post-card(post)
+  article.post-card
+    .post-card__thumb(class=`post-card__thumb--${post.tone}`, role='img', aria-label='Journal preview')
+    .post-card__body
+      p.post-card__meta #{ post.date } / #{ post.category }
+      h3.post-card__title= post.title
+      p.post-card__text= post.text
+      a.post-card__link(href='#journal') Read more ›

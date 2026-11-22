@@ -1,0 +1,13 @@
+//- +work-card(work) - картка роботи портфоліо (дані: src/data/works.pug)
+mixin work-card(work)
+  article.work-card(class=`work-card--${work.tone}`, tabindex='0')
+    +picture(work.image, work.alt, {
+      cls: 'work-card__img',
+      sizes: '(min-width: 1280px) 357px, (min-width: 768px) 50vw, 100vw',
+    })
+    .work-card__overlay
+      span.work-card__plus
+        +icon('plus', 20)
+      h3.work-card__title= work.title
+      span.work-card__line(aria-hidden='true')
+      span.work-card__category= work.categoryLabel

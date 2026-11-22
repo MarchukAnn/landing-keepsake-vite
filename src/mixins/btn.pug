@@ -1,0 +1,15 @@
+//- +btn(label, href, variant) - кнопка або посилання-кнопка.
+//-   є href  -> <a>, немає href -> <button>
+//-   variant: 'primary' (за замовчуванням) | 'ghost'
+//-   block   - вкладений вміст (наприклад, іконка) виводиться перед підписом
+//-   &attributes - довільні атрибути: +btn('Get in touch', '#contact')(aria-label="...")
+mixin btn(label, href, variant = 'primary')
+  - var classes = { 'btn--ghost': variant === 'ghost' };
+  if href
+    a.btn(class=classes, href=href)&attributes(attributes)
+      block
+      = label
+  else
+    button.btn(class=classes, type='button')&attributes(attributes)
+      block
+      = label

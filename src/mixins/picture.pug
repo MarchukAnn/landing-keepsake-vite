@@ -1,0 +1,38 @@
+//- +picture(name, alt, opts) - адаптивне зображення: AVIF -> WebP -> JPEG.
+//-   name - імʼя файлу без ширини й розширення (work-01 -> work-01-400.avif, work-01-800.jpg ...)
+//-   opts - { widths, sizes, width, height, lazy, cls }
+//-   lazy: true (за замовчуванням) -> loading="lazy"; false (перший екран) -> fetchpriority="high"
+mixin picture(name, alt, opts = {})
+  -
+    var o = Object.assign(
+      { widths: [400, 800], sizes: '100vw', width: 800, height: 630, lazy: true, cls: null },
+      opts
+    )
+    var dir = '/src/assets/images'
+    var srcset = function (ext) {
+      return o.widths.map(function (w) { return dir + '/' + name + '-' + w + '.' + ext + ' ' + w + 'w' }).join(', ')
+    }
+    var fallback = dir + '/' + name + '-' + o.widths[o.widths.length - 1] + '.jpg'
+  picture
+    source(type='image/avif', srcset=srcset('avif'), sizes=o.sizes)
+    source(type='image/webp', srcset=srcset('webp'), sizes=o.sizes)
+    if o.lazy
+      img(
+        class=o.cls,
+        src=fallback,
+        alt=alt,
+        width=o.width,
+        height=o.height,
+        loading='lazy',
+        decoding='async'
+      )&attributes(attributes)
+    else
+      img(
+        class=o.cls,
+        src=fallback,
+        alt=alt,
+        width=o.width,
+        height=o.height,
+        fetchpriority='high',
+        decoding='async'
+      )&attributes(attributes)

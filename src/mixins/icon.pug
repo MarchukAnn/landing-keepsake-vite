@@ -1,0 +1,26 @@
+//- +icon(name, size) - SVG-іконка за назвою (case/when).
+//-   heart | mail | up | plus - беруться зі спрайта (includes/svg-sprite.pug)
+//-   web | motion | print     - інлайн-піктограми послуг
+//-   check                    - галочка успішної підписки
+//- Додаткові класи й атрибути: +icon('heart', 14)(class="icon--accent")
+mixin icon(name, size = 16)
+  case name
+    when 'web'
+      svg.icon(width='40', height='30', viewBox='0 0 40 30', aria-hidden='true')&attributes(attributes)
+        rect(x='2', y='2', width='36', height='24', fill='#8b95a1')
+        rect(x='7', y='7', width='26', height='14', fill='#8fd18f')
+    when 'motion'
+      svg.icon(width='36', height='32', viewBox='0 0 36 32', aria-hidden='true')&attributes(attributes)
+        rect(x='2', y='2', width='32', height='28', fill='#5b6b82')
+        rect(x='8', y='8', width='20', height='16', fill='#6aa7e0')
+    when 'print'
+      svg.icon(width='36', height='32', viewBox='0 0 36 32', aria-hidden='true')&attributes(attributes)
+        rect(x='8', y='2', width='20', height='10', fill='#f2c230')
+        rect(x='2', y='12', width='32', height='14', fill='#7d8796')
+    when 'check'
+      svg.icon(width=size, height=size, viewBox='0 0 24 24', aria-hidden='true')&attributes(attributes)
+        circle(cx='12', cy='12', r='12', fill='#2cd5c4')
+        path(d='M7 12.5l3.5 3.5L17 9', stroke='#fff', stroke-width='2', fill='none')
+    default
+      svg.icon(width=size, height=size, aria-hidden='true')&attributes(attributes)
+        use(href=`#i-${name}`)
