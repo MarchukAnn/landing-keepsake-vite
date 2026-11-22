@@ -1,0 +1,26 @@
+//- Категорії фільтра портфоліо (перша - активна за замовчуванням)
+-
+  var categories = [
+    { id: 'all', label: 'All' },
+    { id: 'branding', label: 'Branding' },
+    { id: 'identity', label: 'Identity' },
+    { id: 'print', label: 'Print' },
+    { id: 'web', label: 'Web' },
+    { id: 'motion', label: 'Motion' },
+  ]
+
+//- Роботи портфоліо.
+//- tone - колір-заглушка під зображенням (модифікатор work-card--{tone});
+//- from - з якого брейкпоінта картка показується ('md' | 'lg'; без поля - завжди).
+-
+  var works = [
+    { title: 'Clothes tag', category: 'branding', categoryLabel: 'Branding', image: 'work-01', tone: 'mint', alt: 'Beige mock-up tag on a mint background' },
+    { title: 'Piecepaper', category: 'identity', categoryLabel: 'Identity', image: 'work-02', tone: 'grey', alt: 'Piecepaper wordmark on a light grey background' },
+    { title: 'Vinyl sleeve', category: 'print', categoryLabel: 'Print', image: 'work-03', tone: 'charcoal', alt: 'Dark disc sleeve with a white disc' },
+    { title: 'Vol. 16', category: 'print', categoryLabel: 'Print', image: 'work-04', tone: 'sand', alt: 'Vol. 16 beige card on a tan background' },
+    { title: 'Profile UI', category: 'web', categoryLabel: 'Web', image: 'work-05', tone: 'ink', alt: 'Profile UI card on a dark background' },
+    { title: 'Stationery', category: 'motion', categoryLabel: 'Motion', image: 'work-06', tone: 'salmon', alt: 'Stationery sheets on a salmon background', from: 'md' },
+    { title: 'WallSt.', category: 'identity', categoryLabel: 'Identity', image: 'work-07', tone: 'stone', alt: 'WallSt. logotype with a teal triangle', from: 'md' },
+    { title: 'John Doe', category: 'branding', categoryLabel: 'Branding', image: 'work-08', tone: 'pink', alt: 'John Doe design studio business card on pink', from: 'md' },
+    { title: 'Seal fabric', category: 'print', categoryLabel: 'Print', image: 'work-09', tone: 'navy', alt: 'Seal Fabric stamp on a dark blue background', from: 'lg' },
+  ]
