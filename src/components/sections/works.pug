@@ -1,0 +1,29 @@
+section#works.section.works(aria-labelledby='works-title')
+  //- Радіокнопки, чипси й сітка - сусіди: фільтр працює через :checked ~ (без JS)
+  .container.works__inner
+    each category, i in categories
+      input.works__radio(
+        type='radio',
+        name='works-filter',
+        id=`filter-${category.id}`,
+        value=category.id,
+        checked=i === 0
+      )
+    .works__head
+      +section-title('Our awesome works', 'works-title')
+      .works__chips(role='group', aria-label='Filter works')
+        each category in categories
+          label.chip(for=`filter-${category.id}`)= category.label
+    ul.works__grid
+      each work in works
+        //- from: з якого брейкпоінта картка видима (case/when -> модифікатор)
+        - var reveal = null;
+        case work.from
+          when 'md'
+            - reveal = 'works__item--from-md';
+          when 'lg'
+            - reveal = 'works__item--from-lg';
+        li.works__item(data-category=work.category, class=reveal)
+          +work-card(work)
+    .works__more
+      +btn('Load more works', '#works', 'ghost').works__more-btn

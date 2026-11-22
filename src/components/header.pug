@@ -1,0 +1,24 @@
+header.header
+  .container.header__bar
+    input#nav-toggle.header__toggle(type='checkbox', aria-label='Toggle menu')
+    a.header__logo(href='#top', aria-label='Keepsake home')
+      span.header__logo-mark K
+      | eepsake
+    label.header__burger(for='nav-toggle', aria-hidden='true')
+      span.header__burger-line
+    nav.header__menu(aria-label='Main')
+      ul.header__list
+        each item in navItems
+          li
+            a.header__link(href=item.href, class={ 'is-active': item.active })= item.label
+      a.header__fav(href='#subscribe', aria-label='Favourites')
+        +icon('heart', 16)
+      .header__extra
+        +btn('Contact us', '#contact').btn--lg
+          +icon('mail', 16)
+        +btn('Favourites', '#top', 'ghost').btn--lg
+          +icon('heart', 14).icon--accent
+        .say-hello
+          p.say-hello__caption Say hello
+          p= site.email
+          p= site.phone

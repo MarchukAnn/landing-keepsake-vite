@@ -1,0 +1,7 @@
+section#journal.section(aria-labelledby='journal-title')
+  .container
+    +section-title('From the journal', 'journal-title')
+    p.section__lead Notes on process, case studies and things that inspire us.
+    .posts
+      each post in posts
+        +post-card(post)

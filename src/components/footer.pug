@@ -1,0 +1,18 @@
+footer#contact.footer
+  .container
+    .footer__top
+      .footer__links
+        each column in footerColumns
+          nav.footer__col(aria-label=column.title)
+            h2.footer__heading= column.title
+            ul
+              each link in column.links
+                li.footer__item
+                  a.footer__link(href=link.href)= link.label
+      include newsletter
+    .footer__bottom
+      p © #{ site.year } #{ site.name }. All rights reserved.
+      ul.social
+        each item in socials
+          li.social__item
+            a.social__link(href=item.href, aria-label=item.label, class=`social__link--${item.id}`)= item.short

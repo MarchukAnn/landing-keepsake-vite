@@ -1,0 +1,16 @@
+section#about.section(aria-labelledby='about-title')
+  .container
+    +section-title('What do we do', 'about-title')
+    p.section__lead We are a small team of designers and makers who help brands look their best online and offline.
+    ul.services
+      each service in services
+        li.services__item
+          span.services__icon
+            +icon(service.icon, 36)(class={ 'icon--accent': service.icon === 'heart' })
+          h3.services__title= service.title
+          p.services__text= service.text
+    ul.stats
+      each stat in stats
+        li.stats__item
+          span.stats__value= stat.value
+          span.stats__label= stat.label

@@ -1,0 +1,18 @@
+section.section(aria-labelledby='clients-title')
+  .container
+    +section-title('Clients & kind words', 'clients-title')
+    p.section__lead Some of the teams that trusted us with their brands.
+    ul.clients
+      each client in clients
+        li.clients__item(class=client.variant ? `clients__item--${client.variant}` : null)= client.name
+    figure.quote
+      span.quote__mark(aria-hidden='true') “
+      blockquote.quote__text= quote.text
+      figcaption.quote__author
+        span.quote__avatar= quote.initials
+        span
+          span.quote__name= quote.author
+          small.quote__role= quote.role
+        span.quote__dots(aria-hidden='true')
+          each dot, i in [0, 1, 2]
+            span.quote__dot(class={ 'quote__dot--active': i === 0 })
