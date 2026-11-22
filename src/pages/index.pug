@@ -1,0 +1,29 @@
+extends ../layouts/main
+
+block title
+  title= `${site.name} – Digital & Branding Agency`
+
+//- append: додаємо до блоку макета, не замінюючи charset і viewport
+block append meta
+  meta(name='description', content='Keepsake is a digital and branding agency in London.')
+  meta(property='og:type', content='website')
+  meta(property='og:title', content='Keepsake – Digital & Branding Agency')
+  meta(
+    property='og:description',
+    content='We turn ideas into beautiful things: web design, posters and motion video.'
+  )
+
+//- prepend: шрифти мають завантажуватись раніше за main.scss
+block prepend styles
+  link(rel='preconnect', href='https://fonts.googleapis.com')
+  link(rel='preconnect', href='https://fonts.gstatic.com', crossorigin)
+  link(rel='preload', as='style', href=site.fontsUrl)
+  link(rel='stylesheet', href=site.fontsUrl)
+
+block content
+  include ../components/sections/hero
+  include ../components/sections/works
+  include ../components/sections/cta
+  include ../components/sections/about
+  include ../components/sections/clients
+  include ../components/sections/journal

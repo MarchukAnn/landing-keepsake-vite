@@ -1,0 +1,24 @@
+//- Базовий макет. Дані та міксини підключаємо тут, щоб вони були доступні на всіх сторінках.
+include ../data/index
+include ../mixins/index
+
+doctype html
+html(lang='en')
+  head
+    block meta
+      meta(charset='utf-8')
+      meta(name='viewport', content='width=device-width, initial-scale=1')
+    block title
+      title= site.name
+    block styles
+      link(rel='stylesheet', href='/src/styles/main.scss')
+  body#top
+    include ../includes/svg-sprite
+    include ../components/header
+    main
+      block content
+    include ../components/footer
+    a.to-top(href='#top', aria-label='Back to top')
+      +icon('up', 22)
+    //- Лендінг працює без JavaScript, тому блок порожній; сюди підключають скрипти сторінок.
+    block scripts
