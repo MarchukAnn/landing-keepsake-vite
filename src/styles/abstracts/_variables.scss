@@ -1,0 +1,98 @@
+// Дизайн-токени з lab-07.
+// Кольори й шрифти потім генеруються в CSS custom properties (base/_root.scss).
+
+$colors: (
+  'accent': #f95858,
+  'accent-hover': #e44646,
+  'teal': #2cd5c4,
+  'text-dark': #3a3a3c,
+  'text': #666a6e,
+  'muted': #9aa0a6,
+  'bg-light': #f0f3f4,
+  'border': #e1e5e8,
+  'footer': #2a2a2d,
+  'footer-line': #3d3d41,
+  'field': #3a3a3e,
+  'success-bg': #2f3d3f,
+  'overlay': rgb(30 32 36 / 82%),
+  'white': #fff,
+);
+$fonts: (
+  'head': '"Oswald", sans-serif',
+  'body': '"Open Sans", sans-serif',
+  'script': '"Dancing Script", cursive',
+);
+
+// Токени, що змінюються на брейкпоінтах. Ключі base/md/lg: base - mobile first,
+// md і lg збігаються з ключами $breakpoints.
+$tokens: (
+  'base': (
+    'pad': 20px,
+    'sec': 56px,
+    'max': 1100px,
+    'header-h': 64px,
+    'fs-h1': 26px,
+    'fs-cta': 22px,
+    'fs-nav': 12px,
+    'fs-quote': 16px,
+    'fs-stat': 38px,
+    'fs-logo': 22px,
+    'logo-k': 34px,
+    'ico': 72px,
+    'thumb': 96px,
+    'gap-works': 12px,
+    'card-ratio': '1 / 0.72',
+  ),
+  'md': (
+    'pad': 40px,
+    'sec': 72px,
+    'fs-h1': 32px,
+    'fs-cta': 24px,
+    'fs-nav': 13px,
+    'fs-quote': 19px,
+    'fs-stat': 40px,
+    'fs-logo': 26px,
+    'logo-k': 40px,
+    'ico': 96px,
+    'thumb': 150px,
+    'card-ratio': '1 / 0.79',
+  ),
+  'lg': (
+    'pad': 90px,
+    'sec': 90px,
+    'fs-h1': 40px,
+    'fs-cta': 28px,
+    'fs-quote': 22px,
+    'fs-stat': 48px,
+    'gap-works': 14px,
+  ),
+);
+
+// Категорії фільтра портфоліо (мають збігатися з src/data/works.pug)
+$work-categories: ('all', 'branding', 'identity', 'print', 'web', 'motion');
+
+// Кольори-заглушки під зображеннями карток і превʼю журналу
+$work-tones: (
+  'mint': #8fd3c7,
+  'grey': #ececec,
+  'charcoal': #4a4a54,
+  'sand': #a89578,
+  'ink': #1f2024,
+  'salmon': #e5a595,
+  'stone': #d9d4cd,
+  'pink': #f0b5bd,
+  'navy': #3b4658,
+);
+$post-tones: (
+  'brown': #5b4a3a,
+  'slate': #454b59,
+  'sky': #7ec3dc,
+  'black': #2c2a2b,
+);
+$social-colors: (
+  'rss': #f9a03f,
+  'facebook': #4a67ad,
+  'twitter': #1fb6e8,
+  'dribbble': #ee74b0,
+  'pinterest': #e4444b,
+);

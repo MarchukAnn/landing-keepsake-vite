@@ -1,0 +1,6 @@
+@use 'sass:math';
+
+// rem(18) -> 1.125rem (база 16px). Приймає число БЕЗ одиниць.
+@function rem($px, $base: 16) {
+  @return math.div($px, $base) * 1rem;
+}

@@ -1,0 +1,18 @@
+@use 'sass:map';
+
+// Брейкпоінти lab-07: tablet 768, desktop 1280
+$breakpoints: (
+  'md': 768px,
+  'lg': 1280px,
+);
+
+// Mobile first: лише min-width
+@mixin mq($bp) {
+  @if not map.has-key($breakpoints, $bp) {
+    @error 'Unknown breakpoint: #{$bp}';
+  }
+
+  @media (min-width: map.get($breakpoints, $bp)) {
+    @content;
+  }
+}

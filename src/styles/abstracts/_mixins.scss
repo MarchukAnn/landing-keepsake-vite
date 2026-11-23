@@ -1,0 +1,52 @@
+// Приховує елемент візуально, але залишає його доступним для скрінрідерів
+@mixin visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+// Кільце фокуса (параметри за замовчуванням)
+@mixin focus-ring($color: var(--color-teal), $offset: 2px) {
+  outline: 2px solid $color;
+  outline-offset: $offset;
+}
+
+// Flex-контейнер з центруванням
+@mixin flex-center($direction: row, $gap: null, $inline: false) {
+  @if $inline {
+    display: inline-flex;
+  } @else {
+    display: flex;
+  }
+
+  flex-direction: $direction;
+  align-items: center;
+  justify-content: center;
+
+  @if $gap {
+    gap: $gap;
+  }
+}
+
+// Заголовковий шрифт (Oswald)
+@mixin font-head($weight: 400, $size: var(--fs-nav), $line: 1.2) {
+  font-family: var(--font-head);
+  font-weight: $weight;
+  font-size: $size;
+  line-height: $line;
+}
+
+// Дрібна підпис великими літерами (Oswald, uppercase)
+@mixin label($size: 11px, $tracking: 1px) {
+  font-family: var(--font-head);
+  font-weight: 400;
+  font-size: $size;
+  text-transform: uppercase;
+  letter-spacing: $tracking;
+}
