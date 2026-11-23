@@ -1,0 +1,85 @@
+@use '../abstracts' as *;
+
+.newsletter {
+  @include mq(md) {
+    width: min(100%, 400px);
+  }
+
+  &__text {
+    margin-bottom: 16px;
+  }
+
+  // Повідомлення про успіх: показується, коли URL закінчується на #done (:target)
+  &__success {
+    display: none;
+    align-items: center;
+    gap: 12px;
+    padding: 16px;
+    border: 1px solid var(--color-teal);
+    background: var(--color-success-bg);
+    color: var(--color-white);
+
+    &:target {
+      display: flex;
+    }
+  }
+
+  // Після успішної підписки ховаємо форму й підпис
+  &:has(.newsletter__success:target) {
+    .newsletter__form,
+    .newsletter__text {
+      display: none;
+    }
+  }
+
+  &__row {
+    display: flex;
+    flex-flow: column wrap;
+    gap: 8px;
+
+    @include mq(md) {
+      flex-direction: row;
+    }
+  }
+
+  &__input {
+    flex: 1;
+    min-width: 0;
+    padding: 12px 14px;
+    border: 1px solid transparent;
+    background: var(--color-field);
+    color: var(--color-white);
+    outline: 0;
+
+    &:focus {
+      border-color: var(--color-teal);
+    }
+
+    &:user-invalid {
+      border-color: var(--color-accent);
+    }
+
+    &:user-invalid ~ .newsletter__error {
+      display: block;
+    }
+  }
+
+  &__error {
+    display: none;
+    order: 3;
+    color: var(--color-accent);
+    font-size: 12px;
+
+    @include mq(md) {
+      flex-basis: 100%;
+    }
+  }
+
+  &__agree {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 12px;
+    font-size: 12px;
+  }
+}

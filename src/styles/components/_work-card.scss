@@ -1,0 +1,70 @@
+@use '../abstracts' as *;
+
+.work-card {
+  position: relative;
+  display: block;
+  aspect-ratio: var(--card-ratio);
+  overflow: hidden;
+
+  &__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  // Кольори-заглушки: .work-card--mint, --grey ...
+  @each $tone, $color in $work-tones {
+    &--#{$tone} {
+      background: $color;
+    }
+  }
+
+  &__overlay {
+    @include flex-center(column, 8px);
+
+    position: absolute;
+    inset: 0;
+    background: var(--color-overlay);
+    color: var(--color-white);
+    opacity: 0;
+    transition: opacity 0.25s;
+
+    @media (prefers-reduced-motion: reduce) {
+      transition: none;
+    }
+  }
+
+  &:hover &__overlay,
+  &:focus-within &__overlay,
+  &:focus-visible &__overlay {
+    opacity: 1;
+  }
+
+  &__plus {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--color-teal);
+  }
+
+  &__title {
+    @include font-head(400, rem(16), 1.2);
+
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+
+  &__line {
+    width: 32px;
+    height: 2px;
+    background: var(--color-accent);
+  }
+
+  &__category {
+    @include label(13px, 0);
+
+    color: var(--color-teal);
+  }
+}

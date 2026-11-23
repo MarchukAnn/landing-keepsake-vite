@@ -1,0 +1,29 @@
+@use '../abstracts' as *;
+
+.social {
+  display: flex;
+  gap: 10px;
+
+  &__item {
+    margin-bottom: 8px;
+  }
+
+  &__link {
+    display: grid;
+    place-items: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    color: var(--color-white);
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 11px;
+  }
+
+  // Кольори соцмереж: .social__link--rss, --facebook ...
+  @each $name, $color in $social-colors {
+    &__link--#{$name} {
+      background: $color;
+    }
+  }
+}

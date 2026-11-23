@@ -1,0 +1,38 @@
+@use '../abstracts' as *;
+
+.services {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 32px 20px;
+
+  &__item {
+    flex: 1 1 calc(50% - 20px);
+    text-align: center;
+
+    @include mq(lg) {
+      flex-basis: 25%;
+    }
+  }
+
+  &__icon {
+    display: grid;
+    place-items: center;
+    width: var(--ico);
+    height: var(--ico);
+    margin-inline: auto;
+    border-radius: 50%;
+    background: var(--color-bg-light);
+  }
+
+  &__title {
+    @include label(13px, 1px);
+
+    margin: 16px 0 8px;
+    color: var(--color-text-dark);
+  }
+
+  &__text {
+    font-size: rem(13);
+    line-height: 20px;
+  }
+}

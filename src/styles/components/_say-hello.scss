@@ -1,0 +1,14 @@
+@use '../abstracts' as *;
+
+.say-hello {
+  margin: 28px calc(-1 * var(--pad)) -28px;
+  padding: 28px var(--pad);
+  background: var(--color-bg-light);
+
+  &__caption {
+    @include label(11px, 2px);
+
+    margin-bottom: 8px;
+    color: var(--color-muted);
+  }
+}

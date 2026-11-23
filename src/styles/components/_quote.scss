@@ -1,0 +1,71 @@
+@use '../abstracts' as *;
+
+.quote {
+  padding: 32px var(--pad);
+  background: var(--color-bg-light);
+
+  &__mark {
+    color: var(--color-accent);
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: rem(48);
+    line-height: 1;
+  }
+
+  &__text {
+    margin: 8px 0 24px;
+    color: var(--color-text-dark);
+    font-family: var(--font-body);
+    font-weight: 300;
+    font-size: var(--fs-quote);
+    line-height: 1.6;
+  }
+
+  &__author {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 12px;
+  }
+
+  &__avatar {
+    @include font-head(400, 12px, normal);
+
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--color-teal);
+    color: var(--color-white);
+  }
+
+  &__name {
+    @include label(12px, 1px);
+
+    display: block;
+    color: var(--color-text-dark);
+  }
+
+  &__role {
+    display: block;
+    color: var(--color-muted);
+  }
+
+  &__dots {
+    display: flex;
+    gap: 4px;
+    margin-left: auto;
+  }
+
+  &__dot {
+    width: 12px;
+    height: 2px;
+    background: var(--color-border);
+
+    &--active {
+      width: 20px;
+      background: var(--color-accent);
+    }
+  }
+}

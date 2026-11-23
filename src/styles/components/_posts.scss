@@ -1,0 +1,6 @@
+// Список записей журналу; самі записи - блок post-card
+.posts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px 40px;
+}
