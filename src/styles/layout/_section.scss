@@ -1,0 +1,11 @@
+.section {
+  padding-block: var(--sec) 0;
+
+  &:last-of-type {
+    padding-bottom: var(--sec);
+  }
+
+  &__lead {
+    margin: 8px 0 28px;
+  }
+}

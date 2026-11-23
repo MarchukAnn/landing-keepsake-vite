@@ -1,0 +1,27 @@
+@use 'sass:map';
+@use '../abstracts' as *;
+
+// Виводить map токенів як CSS custom properties
+@mixin emit-tokens($set) {
+  @each $name, $value in $set {
+    --#{$name}: #{$value};
+  }
+}
+
+:root {
+  @each $name, $value in $colors {
+    --color-#{$name}: #{$value};
+  }
+
+  @each $name, $value in $fonts {
+    --font-#{$name}: #{$value};
+  }
+
+  @include emit-tokens(map.get($tokens, 'base'));
+
+  @each $bp in ('md', 'lg') {
+    @include mq($bp) {
+      @include emit-tokens(map.get($tokens, $bp));
+    }
+  }
+}

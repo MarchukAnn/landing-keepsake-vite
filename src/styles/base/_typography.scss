@@ -1,0 +1,11 @@
+@use '../abstracts' as *;
+
+body {
+  padding-top: var(--header-h);
+  background: var(--color-white);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: rem(14);
+  line-height: 22px;
+}

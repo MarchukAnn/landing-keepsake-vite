@@ -1,0 +1,227 @@
+@use '../abstracts' as *;
+
+// Від md меню завжди показується в рядок (і в закритому, і в "відкритому" стані чекбокса)
+@mixin menu-inline {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  position: static;
+  max-height: none;
+  overflow: visible;
+  padding: 0;
+  background: none;
+}
+
+.header {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 50;
+  background: var(--color-white);
+  border-bottom: 1px solid var(--color-border);
+
+  &__bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: var(--header-h);
+  }
+
+  &__logo {
+    display: flex;
+    align-items: center;
+    color: var(--color-text-dark);
+    font-family: var(--font-script);
+    font-weight: 700;
+    font-size: var(--fs-logo);
+    line-height: 1;
+  }
+
+  &__logo-mark {
+    display: grid;
+    place-items: center;
+    width: var(--logo-k);
+    height: var(--logo-k);
+    margin-right: -4px;
+    border-radius: 50%;
+    background: var(--color-text-dark);
+    color: var(--color-white);
+    font-weight: 700;
+  }
+
+  // Прозорий чекбокс поверх бургера: перемикає меню без JS
+  &__toggle {
+    position: absolute;
+    right: var(--pad);
+    top: 12px;
+    width: 40px;
+    height: 40px;
+    opacity: 0;
+    z-index: 2;
+    cursor: pointer;
+
+    &:focus-visible + .header__logo + .header__burger {
+      @include focus-ring($offset: 0);
+    }
+
+    @include mq(md) {
+      display: none;
+    }
+  }
+
+  &__burger {
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    user-select: none;
+
+    @include mq(md) {
+      display: none;
+    }
+  }
+
+  &__burger-line,
+  &__burger-line::before {
+    display: block;
+    position: relative;
+    width: 22px;
+    height: 2px;
+    background: var(--color-text-dark);
+  }
+
+  &__burger-line::before {
+    content: '';
+    position: absolute;
+    top: 7px;
+    left: 0;
+    box-shadow: 0 -14px 0 var(--color-text-dark);
+  }
+
+  // Бургер перетворюється на хрестик, коли чекбокс увімкнено
+  &__toggle:checked + &__logo + &__burger &__burger-line {
+    background: transparent;
+  }
+
+  &__toggle:checked + &__logo + &__burger &__burger-line::before {
+    top: 0;
+    box-shadow: none;
+    transform: rotate(45deg);
+  }
+
+  &__toggle:checked + &__logo + &__burger &__burger-line::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 22px;
+    height: 2px;
+    background: var(--color-text-dark);
+    transform: rotate(-45deg);
+  }
+
+  &__menu {
+    display: none;
+    position: absolute;
+    top: var(--header-h);
+    left: 0;
+    right: 0;
+    max-height: calc(100vh - var(--header-h));
+    overflow: auto;
+    padding-inline: var(--pad);
+    background: var(--color-white);
+
+    @include mq(md) {
+      @include menu-inline;
+    }
+
+    @include mq(lg) {
+      gap: 40px;
+    }
+  }
+
+  &__toggle:checked ~ &__menu {
+    display: block;
+
+    @include mq(md) {
+      @include menu-inline;
+    }
+
+    @include mq(lg) {
+      gap: 40px;
+    }
+  }
+
+  &__list {
+    @include mq(md) {
+      display: flex;
+      gap: 24px;
+    }
+
+    @include mq(lg) {
+      gap: 40px;
+    }
+  }
+
+  &__link {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--color-border);
+    color: var(--color-text-dark);
+    font-family: var(--font-head);
+    font-weight: 300;
+    font-size: 26px;
+    line-height: 1;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+
+    &::after {
+      content: '›';
+      color: var(--color-muted);
+    }
+
+    &:hover,
+    &.is-active {
+      color: var(--color-accent);
+    }
+
+    @include mq(md) {
+      padding: 4px 0;
+      border: 0;
+      font-weight: 400;
+      font-size: var(--fs-nav);
+
+      &::after {
+        display: none;
+      }
+    }
+  }
+
+  &__fav {
+    display: none;
+
+    @include mq(md) {
+      display: grid;
+      place-items: center;
+      width: 36px;
+      height: 36px;
+      background: var(--color-accent);
+      color: var(--color-white);
+
+      &:hover {
+        background: var(--color-accent-hover);
+      }
+    }
+  }
+
+  &__extra {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 28px 0;
+
+    @include mq(md) {
+      display: none;
+    }
+  }
+}

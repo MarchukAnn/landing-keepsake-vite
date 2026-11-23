@@ -1,0 +1,5 @@
+// Єдина точка входу стилів (підключається в layouts/main.pug).
+// Порядок важливий: base -> layout -> components.
+@use 'base';
+@use 'layout';
+@use 'components';
